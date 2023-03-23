@@ -2,12 +2,12 @@
 
 # Use official node image as the base image
 FROM registry.access.redhat.com/ubi8/nodejs-14:latest as build
-
+USER root
 # Set the working directory
-WORKDIR /usr/local/app
+WORKDIR /app
 
 # Add the source code to app
-COPY ./ /usr/local/app/
+COPY . /app
 
 # Install all the dependencies
 RUN npm install
