@@ -22,7 +22,6 @@ RUN npm run build --prod
 FROM registry.access.redhat.com/ubi8/nginx-120
 
 # Copy the build output to replace the default nginx contents.
-RUN cd ./app
 RUN ls -l
 
 RUN cd ./dist
