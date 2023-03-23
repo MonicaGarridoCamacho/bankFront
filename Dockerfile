@@ -1,6 +1,6 @@
 #Primera Etapa
 FROM registry.access.redhat.com/ubi8/nodejs-14:latest
-
+USER root
 RUN mkdir -p /app
 
 WORKDIR /app
