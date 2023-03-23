@@ -1,5 +1,5 @@
 #Primera Etapa
-FROM node:14-alpine as build-step
+FROM registry.access.redhat.com/ubi8/nodejs-14:latest
 
 RUN mkdir -p /app
 
