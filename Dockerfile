@@ -15,9 +15,7 @@ RUN npm install
 # Generate the build of the application
 RUN npm run build --prod
 
-RUN ls -l
-
-RUN cd dist
+WORKDIR /app/dist
 RUN ls -l
 # Stage 2: Serve app with nginx server
 
@@ -26,7 +24,7 @@ FROM registry.access.redhat.com/ubi8/nginx-120
 
 # Copy the build output to replace the default nginx contents.
 
-COPY --from=build /dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
