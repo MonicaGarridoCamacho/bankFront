@@ -22,8 +22,8 @@ RUN ls -l
 # Use official nginx image as the base image
 FROM registry.access.redhat.com/ubi8/nginx-120
 
-# Copy the build output to replace the default nginx contents.
-
-COPY --from=build /app/dist /usr/share/nginx/html
-
-CMD nginx -g "daemon off;"
+COPY nginx-os4.conf /etc/nginx/nginx.conf
+WORKDIR /code
+COPY --from=BUILD /app/dist .
+EXPOSE 8080:8080
+CMD ["nginx", "-g", "daemon off;"]
