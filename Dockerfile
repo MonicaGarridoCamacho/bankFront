@@ -25,6 +25,9 @@ FROM registry.access.redhat.com/ubi8/nginx-120
 RUN cd app
 RUN ls -l
 
+RUN cd dist
+RUN ls -l
+
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expose port 80
