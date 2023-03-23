@@ -15,17 +15,16 @@ RUN npm install
 # Generate the build of the application
 RUN npm run build --prod
 
+RUN ls -l
 
+RUN cd ./dist
+RUN ls -l
 # Stage 2: Serve app with nginx server
 
 # Use official nginx image as the base image
 FROM registry.access.redhat.com/ubi8/nginx-120
 
 # Copy the build output to replace the default nginx contents.
-RUN ls -l
-
-RUN cd ./dist
-RUN ls -l
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
